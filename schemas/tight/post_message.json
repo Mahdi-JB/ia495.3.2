@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "required": [
+    "channel",
+    "text"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "channel": {
+      "type": "string",
+      "enum": [
+        "#general",
+        "#alerts",
+        "#support"
+      ]
+    },
+    "text": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9 ,.\\-'?!()@:/%]{1,500}$"
+    }
+  }
+}

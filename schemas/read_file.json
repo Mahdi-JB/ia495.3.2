@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "required": [
+    "path"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "path": {
+      "type": "string",
+      "pattern": "^/data/reports/[\\w-]+\\.txt$",
+      "maxLength": 128
+    }
+  }
+}

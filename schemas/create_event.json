@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "required": [
+    "title",
+    "date",
+    "attendees"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "attendees": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "pattern": "^[\\w.+-]+@[\\w-]+\\.[\\w.]+$"
+      }
+    }
+  }
+}

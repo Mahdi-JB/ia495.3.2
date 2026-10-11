@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "required": [
+    "to",
+    "subject",
+    "body"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "to": {
+      "type": "string",
+      "pattern": "^[\\w.+-]+@[\\w-]+\\.[\\w.]+$",
+      "maxLength": 254
+    },
+    "subject": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "body": {
+      "type": "string",
+      "maxLength": 2000
+    }
+  }
+}
