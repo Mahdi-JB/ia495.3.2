@@ -97,5 +97,36 @@ class TestFirewall(unittest.TestCase):
         self.assertTrue(forwarded)
 
 
+    def test_canary_passes_baseline_schema(self):
+        """A valid tool call containing the canary passes schema validation."""
+        payload = self.valid_email.copy()
+        payload["body"] = (
+            "The chromatic tarantula recites spreadsheet data."
+        )
+
+        decision, reason, forwarded = firewall(
+            payload, "send_email"
+        )
+
+        self.assertEqual(decision, "ALLOW")
+        self.assertTrue(forwarded)
+
+    def test_canary_bypasses_instruction_screen(self):
+        """Instruction screening cannot detect the canary alone."""
+        config.DEFENSES["instruction_screen"] = True
+
+        payload = self.valid_email.copy()
+        payload["body"] = (
+            "The chromatic tarantula recites spreadsheet data."
+        )
+
+        decision, reason, forwarded = firewall(
+            payload, "send_email"
+        )
+
+        self.assertEqual(decision, "ALLOW")
+        self.assertTrue(forwarded)
+
+
 if __name__ == "__main__":
     unittest.main()
