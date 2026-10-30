@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "required": [
+    "to",
+    "subject",
+    "body"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "to": {
+      "type": "string",
+      "enum": [
+        "bob@example.com",
+        "sara@example.com",
+        "ops.team+alerts@example.co.uk"
+      ]
+    },
+    "subject": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9 ,.\\-':]{1,80}$"
+    },
+    "body": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9 ,.\\-'?!()@:/]{1,500}$"
+    }
+  }
+}
