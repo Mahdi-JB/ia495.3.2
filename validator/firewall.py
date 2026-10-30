@@ -20,7 +20,9 @@ _cache = {}
 def load_schema(tool):
     key = (config.SCHEMA_SET, tool)
     if key not in _cache:
-        base = ROOT / "schemas" / ("tight" if config.SCHEMA_SET == "tight" else "")
+        base = ROOT / "schemas"
+        if config.SCHEMA_SET in ("tight", "refined"):
+            base = base / config.SCHEMA_SET
         _cache[key] = json.loads((base / f"{tool}.json").read_text())
     return _cache[key]
 
