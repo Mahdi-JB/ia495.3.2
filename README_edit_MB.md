@@ -49,8 +49,8 @@ That is the whole loop. Repeat it once per configuration.
 
 |Run|RUN_NAME|What changes in config.py|
 |-|-|-|
-|0|`run0&#95;baseline`|nothing - default schemas, schema check only|
-|1|`run1 _ length _ cap`|`"length_cap": True`|
+|0|`run0_baseline`|nothing - default schemas, schema check only|
+|1|`run1_length_cap`|`"length_cap": True`|
 |2|`run2_allow_list`|`"allow_list": True`|
 |3|`run3_instruction_screen`|`"instruction_screen": True` (deny-list)|
 |4|`run4_tight_schema`|`SCHEMA_SET = "tight"` (allow-list)|
