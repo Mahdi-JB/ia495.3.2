@@ -1,6 +1,6 @@
 """Run configuration. Change ONE thing per run, then set a new RUN_NAME."""
 
-RUN_NAME = "run5_semantic_judge"
+RUN_NAME = "run7_input_judge"
 
 # Which schema set to validate against.
 #   "default" - permissive free-text fields (the realistic starting point)
@@ -14,7 +14,8 @@ DEFENSES = {
     "length_cap":         False,  # run 1
     "allow_list":         False,  # run 2
     "instruction_screen": False,  # run 3 - DENY-LIST, kept as a measured baseline
-    "semantic_judge":     True,
+    "semantic_judge":     False,  # run 5/6 - judges the TOOL CALL
+    "input_judge":        True,   # run 7 - judges the SOURCE DOCUMENT
 }
 
 # Firewall operating mode, mirroring real firewall practice:
@@ -35,6 +36,7 @@ APPROVED_RECIPIENTS = [
 # Optional downstream model (realism only - it is NOT the measurement)
 SEND_TO_MODEL = True
 MODEL = "llama3.2:3b"
+JUDGE_MODEL = "llama3.1:8b"
 TEMPERATURE = 0
 SEED = 42
 TRIALS = 3

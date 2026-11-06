@@ -112,7 +112,7 @@ async def run_document(document, canary=None, verbose=True):
                         "canary_reached_server": False, "server_result": None}
 
             tool_name, args = calls[0]
-            decision, reason, forwarded = firewall(args, tool_name)
+            decision, reason, forwarded = firewall(args, tool_name, document)
 
             score = canary_score(json.dumps(args), canary)
             in_call = score >= config.CANARY_THRESHOLD

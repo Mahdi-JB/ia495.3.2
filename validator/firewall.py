@@ -25,7 +25,7 @@ def load_schema(tool):
     return _cache[key]
 
 
-def detect(payload, tool):
+def detect(payload, tool, context=None):
     """Return a reason string if something was detected, else None."""
     if config.DEFENSES.get("schema", True):
         errors = sorted(Draft202012Validator(load_schema(tool)).iter_errors(payload),
@@ -36,15 +36,15 @@ def detect(payload, tool):
     for name, enabled in config.DEFENSES.items():
         if name == "schema" or not enabled:
             continue
-        reason = defenses.REGISTRY[name](payload, tool)
+        reason = defenses.REGISTRY[name](payload, tool, context)
         if reason:
             return reason
     return None
 
 
-def firewall(payload, tool):
+def firewall(payload, tool, context=None):
     """Return (decision, reason, forwarded)."""
-    reason = detect(payload, tool)
+    reason = detect(payload, tool, context)
     if reason is None:
         return "ALLOW", "", True
     if config.LOG_ONLY:
