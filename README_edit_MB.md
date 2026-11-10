@@ -13,7 +13,8 @@ alarms.
 Download Ollama for Windows through the download site https://ollama.com/download/windows or with a command line `irm https://ollama.com/install.ps1 | iex`.
 When downloaded, run `ollama -v`. This gives the version and verifies the download. If needed, a second download is often successful.
 
-Next, execute, `pip install mcp ollama jsonschema rapidfuzz`<br>
+Next, execute <br> 
+`pip install mcp ollama jsonschema rapidfuzz`<br>
 `ollama pull llama3.2:3b`
 
 Then verify offline operation. Turn the network off, run `ollama run llama3.2:3b`, ask it anything, screenshot it. Record the model digest from
